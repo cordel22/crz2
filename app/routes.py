@@ -2,7 +2,8 @@ from flask import render_template, request
 from app import app
 from app.scraper import CRZScraper
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
+#@app.route('/', methods=['GET', 'POST'])
 def index():
     contract_number = "24/01/054/138"  # Default value
     extracted_text = None
