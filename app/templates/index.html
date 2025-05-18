@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRZ Contract Viewer</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Slovak Contract Registry Viewer</h1>
+        <form method="POST">
+            <input type="text" name="contract_number" 
+                   placeholder="Enter contract number" 
+                   value="{{ contract_number }}">
+            <button type="submit">Search</button>
+        </form>
+        
+        {% if extracted_text %}
+        <div class="results">
+            <h2>Extracted Text (first 5000 characters):</h2>
+            <pre>{{ extracted_text }}</pre>
+        </div>
+        {% elif extracted_text is none and request.method == 'POST' %}
+        <p class="error">No contract found or error occurred.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
